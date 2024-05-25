@@ -10,12 +10,13 @@ const userSchema = new mongoose.Schema({
         required: true,
         min: 18,
         validate:{
-           validate: (value)=>value>=18,
+           validator: (value)=>value>=18,
            message: "Age must be at least 18 years old."
         } 
     },
-    employmentStatus:{
+    employementStatus:{
         type: String,
+        required: true,
         enum:["student", "fulltime", "parttime", "freelance", "unemployed", "selfemployed"]
     },
     dateOfBirth: {
@@ -29,6 +30,11 @@ const userSchema = new mongoose.Schema({
     country:{
         type:String,
         required: true
+    },
+    walletPublicAddress:{
+        type:String,
+        required: true,
+        unique: true
     }
 
 })
