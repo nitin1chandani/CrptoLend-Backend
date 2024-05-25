@@ -35,6 +35,21 @@ const userSchema = new mongoose.Schema({
         type:String,
         required: true,
         unique: true
+    },
+
+    incomeSlab: {
+        type: String,
+        required: true,
+        unique: false,
+        enum:["$0 - $1,000",
+        "$1,001 - $2,500",
+        "$2,501 - $5,000",
+        "$5,001 - $10,000",
+        "$10,001 - $20,000",
+        "$20,001 - above",
+    ]
+
+
     }
 
 })

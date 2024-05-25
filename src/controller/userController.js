@@ -2,9 +2,9 @@ import User from "../models/UserModel.js";
 
 export async function createUser(req, res, next){
     try{
-        const {name, age, employementStatus, dateOfBirth, address, country, walletPublicAddress} = req.body;
+        const {name, age, employementStatus, dateOfBirth, address, country, walletPublicAddress, incomeSlab} = req.body;
 
-        if(!name || !age || !employementStatus || !address || !country || !walletPublicAddress){
+        if(!name || !age || !employementStatus || !address || !country || !walletPublicAddress || !incomeSlab){
             return res.status(400).json({
                 message: "Missing Required User Information."
             })
@@ -18,7 +18,8 @@ export async function createUser(req, res, next){
             address,
             country,
             walletPublicAddress,
-          });
+            incomeSlab,
+        });
 
         const savedUser = await newUser.save();
 
